@@ -1,17 +1,20 @@
 class Solution {
-    public int maxSumAfterPartitioning(int[] arr, int k) {
-        int dp[] = new int[arr.length+1];
-        for(int index=arr.length-1;index>=0;index--){
-            int max = Integer.MIN_VALUE;
-            int ans = Integer.MIN_VALUE;
-            int len = 0;
-            for(int i=index;i<index+k && i<arr.length;i++){
-                len++;
-                max = Math.max(max, arr[i]);
-                ans = Math.max(ans, len*max + dp[i+1]);
+    public List<Integer> sequentialDigits(int low, int high) {
+        List<Integer> arr = new ArrayList<>();
+        int next;
+        int num;
+        for (int i=1; i<=9; i++) {
+            next = i+1;
+            num = i;
+            while (num<=high && next<=9) {
+                num = num * 10 + next;
+                if (num>=low && num<=high) {
+                    arr.add(num);
+                }
+                next++;
             }
-            dp[index] =  ans;
         }
-        return dp[0];
+        Collections.sort(arr);
+        return arr;   
     }
 }
