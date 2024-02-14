@@ -1,3 +1,4 @@
+
 class Solution {
     public int minSteps(String s, String t) {
         int[] count = new int[26];
